@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { motion } from "motion/react";
 import Typewriter from "./Typewriter";
 
@@ -16,7 +16,7 @@ const containerVariants = {
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 20,
     filter: "blur(6px)",
   },
 
@@ -44,7 +44,6 @@ function HeroLeft() {
         <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
           </span>
 
@@ -58,17 +57,18 @@ function HeroLeft() {
       <motion.h1
         variants={itemVariants}
         className="
-          text-4xl
-          font-semibold
-          leading-[1.15]
+          text-5xl
+          font-bold
+          leading-[1.08]
           tracking-tight
           text-white
-          sm:text-5xl
-          lg:text-6xl
+          sm:text-6xl
+          lg:text-[4rem]
+          xl:text-[4.25rem]
         "
       >
-        <span className="block text-neutral-300">I’m a</span>
-        <span className="block mt-1">
+        <span className="block text-white">I’m a</span>
+        <span className="block mt-1 sm:mt-1.5">
           <Typewriter />
         </span>
       </motion.h1>
@@ -77,13 +77,13 @@ function HeroLeft() {
       <motion.p
         variants={itemVariants}
         className="
-          mt-8
-          max-w-xl
-          text-lg
+          mt-6
+          max-w-lg
+          text-base
           font-normal
           leading-relaxed
           text-neutral-400
-          sm:text-xl
+          sm:text-lg
         "
       >
         I build modern web applications, explore AI, and turn ideas into useful
@@ -93,12 +93,12 @@ function HeroLeft() {
       {/* Buttons */}
       <motion.div
         variants={itemVariants}
-        className="mt-10 flex flex-wrap items-center gap-4"
+        className="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4"
       >
         {/* Contact */}
         <motion.a
           href="#contact"
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.02, y: -1 }}
           whileTap={{ scale: 0.98 }}
           className="
             group
@@ -107,28 +107,26 @@ function HeroLeft() {
             gap-2.5
             rounded-xl
             bg-white
-            px-7
+            px-6
             py-3.5
+            text-sm
+            sm:text-base
             font-medium
-            text-neutral-950
-            shadow-[0_0_20px_rgba(255,255,255,0.2)]
-            transition-all
-            duration-300
-            hover:shadow-[0_0_30px_rgba(255,255,255,0.35)]
+            text-black
+            shadow-sm
+            transition-colors
+            duration-200
+            hover:bg-neutral-100
           "
         >
-          <Mail
-            size={18}
-            className="transition-transform duration-300 group-hover:scale-110"
-          />
-
+          <Mail size={18} />
           <span>Contact</span>
         </motion.a>
 
-        {/* Projects */}
+        {/* View My Work */}
         <motion.a
           href="#projects"
-          whileHover={{ scale: 1.03, y: -2 }}
+          whileHover={{ scale: 1.02, y: -1 }}
           whileTap={{ scale: 0.98 }}
           className="
             group
@@ -139,26 +137,27 @@ function HeroLeft() {
             border
             border-white/15
             bg-white/[0.04]
-            px-7
+            backdrop-blur-md
+            px-6
             py-3.5
+            text-sm
+            sm:text-base
             font-medium
             text-white
-            backdrop-blur-sm
             transition-all
-            duration-300
+            duration-200
             hover:border-white/30
             hover:bg-white/[0.08]
           "
         >
           <span>View My Work</span>
 
-          <ArrowUpRight
+          <ArrowRight
             size={18}
             className="
               transition-transform
-              duration-300
+              duration-200
               group-hover:translate-x-1
-              group-hover:-translate-y-1
             "
           />
         </motion.a>

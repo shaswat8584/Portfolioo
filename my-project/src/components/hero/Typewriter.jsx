@@ -49,11 +49,8 @@ function Typewriter() {
   }, [text, isDeleting, wordIndex]);
 
   return (
-    <span className="inline-flex items-baseline font-semibold whitespace-nowrap">
-      {/* High-end gradient text */}
-      <span className="bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent">
-        {text || "\u00A0"}
-      </span>
+    <span className="inline-flex items-baseline font-bold whitespace-nowrap text-white">
+      <span>{text || "\u00A0"}</span>
 
       {/* Luminous breathing cursor */}
       <motion.span

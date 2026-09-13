@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Renderer,
-  Program,
-  Mesh,
-  Triangle,
-  Transform,
-  Texture,
-} from "ogl";
+import { Renderer, Program, Mesh, Triangle, Transform, Texture } from "ogl";
 
 const VERTEX_SHADER = `
   attribute vec2 position;
@@ -234,12 +227,7 @@ const FRAGMENT_SHADER = `
   }
 `;
 
-function PortraitMorph({
-  srcA,
-  srcB,
-  alt = "",
-  className = "",
-}) {
+function PortraitMorph({ srcA, srcB, alt = "", className = "" }) {
   const containerRef = useRef(null);
   const [ready, setReady] = useState(false);
 
@@ -259,10 +247,7 @@ function PortraitMorph({
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: false,
-      dpr: Math.min(
-        window.devicePixelRatio || 1,
-        2
-      ),
+      dpr: Math.min(window.devicePixelRatio || 1, 2),
     });
 
     const gl = renderer.gl;
@@ -395,8 +380,8 @@ function PortraitMorph({
       // Target progress
       const target = hoverRef.current ? 1 : 0;
 
-      // Smooth interpolation
-      const stiffness = hoverRef.current ? 2.4 : 2.0;
+      // Balanced smooth transition speed
+      const stiffness = hoverRef.current ? 1.8 : 2.2;
       const k = 1 - Math.exp(-stiffness * dt);
 
       progressRef.current += (target - progressRef.current) * k;
@@ -417,10 +402,7 @@ function PortraitMorph({
     // -------------------------
     // Load both images
     // -------------------------
-    Promise.all([
-      loadImage(srcA, texA),
-      loadImage(srcB, texB),
-    ])
+    Promise.all([loadImage(srcA, texA), loadImage(srcB, texB)])
       .then(() => {
         setReady(true);
         last = performance.now();
@@ -557,7 +539,7 @@ function PortraitMorph({
         position: "relative",
         width: "100%",
         height: "100%",
-        filter: "grayscale(100%)",
+        // filter: "grayscale(100%)",
       }}
     >
       {!ready && (
