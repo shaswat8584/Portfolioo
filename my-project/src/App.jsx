@@ -5,6 +5,7 @@ import ContactCard from "./components/contact/ContactCard";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ShaderBackground from "./components/ShaderBackground";
+import TechStack from "./components/TechStack";
 import Hero from "./components/hero/Hero";
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
     };
   }, []);
   return (
-    <main className="min-h-screen bg-[#171717] p-4">
+    <main className="min-h-screen bg-[#080808] p-4">
       <div
         className="
           relative
@@ -73,6 +74,7 @@ function App() {
         <div className="relative z-10">
           <Navbar />
           <Hero />
+          <TechStack />
           <ContactCard />
           <Footer />
         </div>
