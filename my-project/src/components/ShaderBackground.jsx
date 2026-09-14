@@ -126,7 +126,14 @@ const fragmentShader = `
   }
 `;
 
-function ShaderBackground() {
+function ShaderBackground({
+  scale = 6,
+  brightness = 1.3,
+  speed = [0.1, 0.2],
+  iterations = 14,
+  standalone = false,
+  className = "",
+}) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -172,19 +179,19 @@ function ShaderBackground() {
         },
 
         uFlowSpeed: {
-          value: [0.1, 0.2],
+          value: speed,
         },
 
         uScale: {
-          value: 6,
+          value: scale,
         },
 
         uBrightness: {
-          value: 1.3,
+          value: brightness,
         },
 
         uIterations: {
-          value: 14,
+          value: iterations,
         },
 
         // Luminous silver / light gray base
@@ -266,11 +273,30 @@ function ShaderBackground() {
     };
   }, []);
 
+  if (standalone) {
+    return (
+      <div
+        ref={containerRef}
+        className={`pointer-events-none absolute inset-0 h-full w-full overflow-hidden grayscale ${className}`}
+      />
+    );
+  }
+
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 h-full w-full overflow-hidden grayscale pointer-events-none"
-    />
+    <div className={`pointer-events-none absolute inset-x-0 top-0 h-[100vh] min-h-[750px] overflow-hidden ${className}`}>
+      <div
+        ref={containerRef}
+        className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden grayscale"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0) 100%)",
+        }}
+      />
+      {/* Seamless bottom fade blending into the page background */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-[#080808]/70 to-[#080808]" />
+    </div>
   );
 }
 

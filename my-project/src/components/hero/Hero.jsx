@@ -14,7 +14,7 @@ const containerVariants = {
 
 function Hero() {
   return (
-    <section className="flex min-h-[calc(100vh-2rem)] items-center px-6 py-20 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+    <section id="home" className="flex min-h-[calc(100vh-2rem)] items-center px-6 py-20 sm:px-10 md:px-12 lg:px-20 xl:px-24">
       <motion.div
         variants={containerVariants}
         initial="hidden"
